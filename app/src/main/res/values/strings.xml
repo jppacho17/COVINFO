@@ -5,4 +5,6 @@
     <string name="btninfo">Última información sobre COVID-19</string>
     <string name="btnrecomendaciones">Recomendaciones</string>
     <string name="btntest">Test COVID-19</string>
+    <string name="btnEstadisticas">Estadísticas mundiales</string>
+    <string name="EstadisticasMundiales">Estadísticas mundiales</string>
 </resources>

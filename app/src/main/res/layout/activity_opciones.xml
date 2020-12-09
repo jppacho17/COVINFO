@@ -12,7 +12,7 @@
 
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/buttonInfo"
         android:layout_width="match_parent"
         android:background="@drawable/btn_opciones_pulsado"
         android:layout_height="75dp"
@@ -21,7 +21,16 @@
         android:text="@string/btninfo" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/buttonEstadisticas"
+        android:layout_width="match_parent"
+        android:background="@drawable/btn_opciones_pulsado"
+        android:layout_height="75dp"
+        android:layout_marginBottom="50dp"
+        android:textColor="@drawable/txt_btn_opciones"
+        android:text="@string/btnEstadisticas" />
+
+    <Button
+        android:id="@+id/buttonRecomendaciones"
         android:layout_width="match_parent"
         android:layout_height="75dp"
         android:layout_marginBottom="50dp"
@@ -30,7 +39,7 @@
         android:text="@string/btnrecomendaciones" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonTest"
         android:layout_width="match_parent"
         android:layout_height="75dp"
         android:layout_marginBottom="50dp"
