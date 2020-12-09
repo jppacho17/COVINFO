@@ -7,4 +7,20 @@
     <string name="btntest">Test COVID-19</string>
     <string name="btnEstadisticas">Estadísticas mundiales</string>
     <string name="EstadisticasMundiales">Estadísticas mundiales</string>
+    <string name="testCovidInicio1">Este test está diseñado para ayudarte a tomar la mejor decisión en caso de que tengas síntomas o dudas acerca del COVID-19</string>
+    <string name="testCovidInicio2">Durante el test no se recogerá ningún dato, y el resultado es estrictamente personal y confidencial</string>
+    <string name="comenzarTest">Comenzar Test</string>
+    <string name="tituloTest">Test COVID-19</string>
+    <string name="si">SI</string>
+    <string name="no">NO</string>
+    <string name="P1_1">¿Tienes ALGUNO de los síntomas habituales de la enfermedad?</string>
+    <string name="P1_2">Los síntomas habituales son tos, fiebre superior a 38ºC o dificultad para respirar</string>
+    <string name="P1_3">En algunos casos también puede haber disminución del gusto y del olfato, dolores musculares, diarrea, dolor torácico o de cabeza.</string>
+    <string name="P2">¿Has estado en contacto con alguna persona enferma con COVID-19?</string>
+    <string name="P3">¿Te cuesta respirar?</string>
+    <string name="repetirTest">Repetir test</string>
+    <string name="menuPrincipal">Menú Principal</string>
+    <string name="quedateCasa">¡Quédate en casa!</string>
+    <string name="llamarHospital">Llama al hospital para hablar con un médico</string>
+    <string name="respirarSOS">Si la dificultad es importante llama al 112</string>
 </resources>

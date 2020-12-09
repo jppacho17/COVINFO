@@ -2,21 +2,38 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.covinfo">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
-        android:usesCleartextTraffic="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Theme.COVINFO">
-        <activity android:name=".import_web" android:label="@string/EstadisticasMundiales"
+        android:theme="@style/Theme.COVINFO"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".test_covid_Sos"
+            android:label="@string/tituloTest"
             ></activity>
+        <activity android:name=".test_covid_casa"
+            android:label="@string/tituloTest"
+            />
+        <activity android:name=".test_covid_p3"
+            android:label="@string/tituloTest"
+            />
+        <activity android:name=".test_covid_P2"
+            android:label="@string/tituloTest" />
+        <activity android:name=".test_covid_P1"
+            android:label="@string/tituloTest" />
+        <activity
+            android:name=".test_covid_inicio"
+            android:label="@string/tituloTest" />
+        <activity
+            android:name=".import_web"
+            android:label="@string/EstadisticasMundiales" />
         <activity
             android:name=".Opciones"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".SplashScreen"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">

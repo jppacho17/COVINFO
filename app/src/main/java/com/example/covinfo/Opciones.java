@@ -10,12 +10,15 @@ import android.widget.Button;
 public class Opciones extends AppCompatActivity {
 
     Button btnEstadisticas;
+    Button btnTest;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_opciones);
 
         btnEstadisticas = (Button) findViewById(R.id.buttonEstadisticas);
+        btnTest = (Button) findViewById(R.id.buttonTest);
 
         btnEstadisticas.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -25,5 +28,12 @@ public class Opciones extends AppCompatActivity {
             }
         });
 
+        btnTest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent irTest = new Intent(Opciones.this,test_covid_inicio.class);
+                startActivity(irTest);
+            }
+        });
     }
 }

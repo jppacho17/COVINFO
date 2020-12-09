@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="40dp"
+    tools:context=".test_covid_inicio">
+
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="189dp"
+        android:layout_height="183dp"
+        android:layout_marginBottom="50dp"
+        app:srcCompat="@drawable/cuestionario" />
+
+    <TextView
+        android:id="@+id/textViewTestInicio1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:layout_marginBottom="50dp"
+        android:elegantTextHeight="true"
+        android:typeface="serif"
+        android:gravity="center"
+        android:text="@string/testCovidInicio1" />
+
+    <TextView
+        android:id="@+id/textViewTestInicio2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:elegantTextHeight="true"
+        android:typeface="serif"
+        android:gravity="center"
+        android:text="@string/testCovidInicio2" />
+
+    <Button
+        android:id="@+id/buttonTestInicio"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="50dp"
+        android:layout_height="wrap_content"
+        android:text="@string/comenzarTest" />
+
+
+</LinearLayout>
