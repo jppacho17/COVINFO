@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#e7e5e5"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="40dp"
+    tools:context=".Opciones">
+
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="match_parent"
+        android:background="@drawable/btn_opciones_pulsado"
+        android:layout_height="75dp"
+        android:layout_marginBottom="50dp"
+        android:textColor="@drawable/txt_btn_opciones"
+        android:text="@string/btninfo" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/btn_opciones_pulsado"
+        android:textColor="@drawable/txt_btn_opciones"
+        android:text="@string/btnrecomendaciones" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_marginBottom="50dp"
+        android:textColor="@drawable/txt_btn_opciones"
+        android:background="@drawable/btn_opciones_pulsado"
+        android:text="@string/btntest" />
+</LinearLayout>
