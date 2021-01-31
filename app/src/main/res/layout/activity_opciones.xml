@@ -46,4 +46,14 @@
         android:textColor="@drawable/txt_btn_opciones"
         android:background="@drawable/btn_opciones_pulsado"
         android:text="@string/btntest" />
+
+    <Button
+        android:id="@+id/buttonBBDD"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_marginBottom="50dp"
+        android:textColor="@drawable/txt_btn_opciones"
+        android:background="@drawable/btn_opciones_pulsado"
+        android:text="@string/btnBBDD" />
+
 </LinearLayout>

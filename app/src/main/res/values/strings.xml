@@ -23,4 +23,13 @@
     <string name="quedateCasa">¡Quédate en casa!</string>
     <string name="llamarHospital">Llama al hospital para hablar con un médico</string>
     <string name="respirarSOS">Si la dificultad es importante llama al 112</string>
+    <string name="fecha">Selecciona la fecha:</string>
+    <string name="temperatura">Escribe la temperatura que tienes hoy:</string>
+    <string name="btnAñadir">Añadir Datos</string>
+    <string name="btnModificar">Modificar Datos</string>
+    <string name="btnMostrar">Mostrar Datos</string>
+    <string name="btnEliminar">Eliminar Datos</string>
+    <string name="btnGrafica">Gráfica Datos</string>
+    <string name="btnEnviarDatos">Enviar Datos</string>
+    <string name="btnBBDD">Base de Datos</string>
 </resources>

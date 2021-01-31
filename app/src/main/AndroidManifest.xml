@@ -12,18 +12,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.COVINFO"
         android:usesCleartextTraffic="true">
-        <activity android:name=".test_covid_Sos"
-            android:label="@string/tituloTest"
-            ></activity>
-        <activity android:name=".test_covid_casa"
-            android:label="@string/tituloTest"
-            />
-        <activity android:name=".test_covid_p3"
-            android:label="@string/tituloTest"
-            />
-        <activity android:name=".test_covid_P2"
+        <activity android:name=".AnadirDatosbbdd" />
+        <activity android:name=".opcionesbbdd" />
+        <activity
+            android:name=".test_covid_Sos"
             android:label="@string/tituloTest" />
-        <activity android:name=".test_covid_P1"
+        <activity
+            android:name=".test_covid_casa"
+            android:label="@string/tituloTest" />
+        <activity
+            android:name=".test_covid_p3"
+            android:label="@string/tituloTest" />
+        <activity
+            android:name=".test_covid_P2"
+            android:label="@string/tituloTest" />
+        <activity
+            android:name=".test_covid_P1"
             android:label="@string/tituloTest" />
         <activity
             android:name=".test_covid_inicio"

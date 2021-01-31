@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#e7e5e5"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="40dp"
+    tools:context=".opcionesbbdd">
+
+        <Button
+            android:id="@+id/buttonAñadirDatos"
+            android:layout_width="match_parent"
+            android:background="@drawable/btn_opciones_pulsado"
+            android:layout_height="65dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="50dp"
+            android:textColor="@drawable/txt_btn_opciones"
+            android:text="@string/btnAñadir" />
+
+        <Button
+            android:id="@+id/buttonMostrarDatos"
+            android:layout_width="match_parent"
+            android:background="@drawable/btn_opciones_pulsado"
+            android:layout_height="65dp"
+            android:layout_marginBottom="50dp"
+            android:textColor="@drawable/txt_btn_opciones"
+            android:text="@string/btnMostrar" />
+
+        <Button
+            android:id="@+id/buttonModificarDatos"
+            android:layout_width="match_parent"
+            android:background="@drawable/btn_opciones_pulsado"
+            android:layout_height="65dp"
+            android:layout_marginBottom="50dp"
+            android:textColor="@drawable/txt_btn_opciones"
+            android:text="@string/btnModificar" />
+
+        <Button
+            android:id="@+id/buttonEliminarDatos"
+            android:layout_width="match_parent"
+            android:background="@drawable/btn_opciones_pulsado"
+            android:layout_height="65dp"
+            android:layout_marginBottom="50dp"
+            android:textColor="@drawable/txt_btn_opciones"
+            android:text="@string/btnEliminar" />
+
+        <Button
+            android:id="@+id/buttonGraficaDatos"
+            android:layout_width="match_parent"
+            android:background="@drawable/btn_opciones_pulsado"
+            android:layout_height="65dp"
+            android:layout_marginBottom="50dp"
+            android:textColor="@drawable/txt_btn_opciones"
+            android:text="@string/btnGrafica" />
+
+        <Button
+            android:id="@+id/buttonEnviarDatos"
+            android:layout_width="match_parent"
+            android:background="@drawable/btn_opciones_pulsado"
+            android:layout_height="65dp"
+            android:layout_marginBottom="50dp"
+            android:textColor="@drawable/txt_btn_opciones"
+            android:text="@string/btnEnviarDatos" />
+
+</LinearLayout>

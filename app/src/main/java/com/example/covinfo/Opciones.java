@@ -11,6 +11,7 @@ public class Opciones extends AppCompatActivity {
 
     Button btnEstadisticas;
     Button btnTest;
+    Button btnBBDD;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +20,7 @@ public class Opciones extends AppCompatActivity {
 
         btnEstadisticas = (Button) findViewById(R.id.buttonEstadisticas);
         btnTest = (Button) findViewById(R.id.buttonTest);
+        btnBBDD = (Button) findViewById(R.id.buttonBBDD);
 
         btnEstadisticas.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,6 +35,14 @@ public class Opciones extends AppCompatActivity {
             public void onClick(View v) {
                 Intent irTest = new Intent(Opciones.this,test_covid_inicio.class);
                 startActivity(irTest);
+            }
+        });
+
+        btnBBDD.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent irBBDD = new Intent(Opciones.this,opcionesbbdd.class);
+                startActivity(irBBDD);
             }
         });
     }
