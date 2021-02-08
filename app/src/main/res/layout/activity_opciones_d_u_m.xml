@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#e7e5e5"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="40dp"
+    tools:context=".opcionesbbdd">
+
+
+    <Button
+        android:id="@+id/btndatos"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:layout_marginBottom="50dp"
+        android:text="@string/datos" />
+
+    <Button
+        android:id="@+id/btnusuarios"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:layout_marginBottom="50dp"
+        android:text="@string/usuarios" />
+
+    <Button
+        android:id="@+id/btncentroMedico"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:layout_marginBottom="50dp"
+        android:text="@string/centroMedico" />
+</LinearLayout>

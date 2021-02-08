@@ -32,4 +32,30 @@
     <string name="btnGrafica">Gráfica Datos</string>
     <string name="btnEnviarDatos">Enviar Datos</string>
     <string name="btnBBDD">Base de Datos</string>
+    <string name="txtdni">Introduce tu DNI: </string>
+    <string name="txttemperatura">Introduce tu temperatura actual: </string>
+    <string name="txtfecha">Introduce la fecha de la medición: (año/mes/dia) </string>
+    <string name="txtsint1">Introduce tu sintoma1: </string>
+    <string name="txtsint2">Introduce tu sintoma2: </string>
+    <string name="txtotros">Introduce otros síntomas: </string>
+    <string name="txtnombre">Introduce tu nombre: </string>
+    <string name="txtapellidos">Introduce tus apellidos: </string>
+    <string name="txttarjetasanitaria">Introduce el número de la tarjeta sanitaria: </string>
+    <string name="txtedad">Introduce tu edad: </string>
+    <string name="btnVolver">Volver</string>
+    <string name="datosExtraidos">Los datos extraídos de la bbdd:</string>
+    <string name="errorBDVacia">Error Base de Datos vacía</string>
+    <string name="datos">DATOS</string>
+    <string name="usuarios">USUARIOS</string>
+    <string name="centroMedico">CENTRO MÉDICO</string>
+    <string name="title_activity_mostrar_datos_usuario">mostrarDatosUsuario</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
 </resources>

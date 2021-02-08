@@ -31,7 +31,7 @@ public class Developerbbdd extends SQLiteOpenHelper {
         db.execSQL(TABLA_DATOS);
     }
 
-    public void agregarUsuarios(String dni, String nombre, String apellidos, String tarjetaSanitaria, int edad){
+    public void agregarUsuarios(String dni, String nombre, String apellidos, String tarjetaSanitaria, String edad){
         SQLiteDatabase bd=getWritableDatabase();
         if(bd!=null){
             bd.execSQL("INSERT INTO USUARIOS VALUES('"+dni+"','"+nombre+"','"+apellidos+"','"+tarjetaSanitaria+"','"+edad+"')");
@@ -39,7 +39,7 @@ public class Developerbbdd extends SQLiteOpenHelper {
         }
     }
 
-    public void agregarDatos(String dni, float temperatura, String fecha, String sint1, String sint2, String otros){
+    public void agregarDatos(String dni, String temperatura, String fecha, String sint1, String sint2, String otros){
         SQLiteDatabase bd=getWritableDatabase();
         if(bd!=null){
             bd.execSQL("INSERT INTO DATOS VALUES('"+dni+"','"+temperatura+"','"+fecha+"','"+sint1+"','"+sint2+"','"+otros+"')");

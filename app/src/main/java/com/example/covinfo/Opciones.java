@@ -41,7 +41,7 @@ public class Opciones extends AppCompatActivity {
         btnBBDD.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent irBBDD = new Intent(Opciones.this,opcionesbbdd.class);
+                Intent irBBDD = new Intent(Opciones.this,opcionesDUM.class);
                 startActivity(irBBDD);
             }
         });
