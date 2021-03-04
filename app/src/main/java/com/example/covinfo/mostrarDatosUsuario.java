@@ -1,6 +1,8 @@
 package com.example.covinfo;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -10,8 +12,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 public class mostrarDatosUsuario extends AppCompatActivity {
+
+    private TextView txtResultado;
+    private Button btnVolver;
+    private SQLiteDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,5 +43,28 @@ public class mostrarDatosUsuario extends AppCompatActivity {
                 Snackbar.make(view, "En el futuro se enviarán los datos", Snackbar.LENGTH_LONG).setAction("Action", null).show();
             }
         });
+
+        txtResultado = (TextView) findViewById(R.id.datosUsuario);
+        //btnVolver = (Button) findViewById(R.id.selectVolver);
+
+
+        // BD
+        Developerbbdd BaseDatos = new Developerbbdd(this);
+        db = BaseDatos.getReadableDatabase();
+
+        // Alternativa: query
+        String[] campos = new String[] { "dni","temperatura","fecha","sint1", "sint2","otros"};
+        //Invocación método para obtener todas las columnas de la base de datos, sin condiciones
+        Cursor c = db.query("DATOS", campos, null, null, null, null, null);
+        while(c.moveToNext()){
+            String dni = c.getString(0);
+            String temperatura = c.getString(1);
+            String fecha = c.getString(2);
+            String sint1 = c.getString(3);
+            String sint2 = c.getString(4);
+            String otros = c.getString(5);
+            txtResultado.append(dni + " - " + temperatura + " - " + fecha + " - " + sint1 + " "  + sint2 + "" + otros + "" +"\n");
+        }
+
     }
 }

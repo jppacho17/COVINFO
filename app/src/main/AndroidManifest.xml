@@ -12,10 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.COVINFO"
         android:usesCleartextTraffic="true">
+        <activity android:name=".AnadirDatosUsuario"></activity>
         <activity
             android:name=".mostrarDatosUsuario"
             android:label="@string/title_activity_mostrar_datos_usuario"
-            android:theme="@style/Theme.COVINFO.NoActionBar"></activity>
+            android:theme="@style/Theme.COVINFO.NoActionBar" />
         <activity android:name=".opcionesDUM" />
         <activity android:name=".EliminarDatosbbdd" />
         <activity android:name=".ObtenerDatosbbdd" />

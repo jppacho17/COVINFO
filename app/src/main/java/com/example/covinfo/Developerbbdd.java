@@ -9,7 +9,7 @@ import androidx.annotation.Nullable;
 public class Developerbbdd extends SQLiteOpenHelper {
 
     private static final String NOMBRE_BD="developerjp";
-    private static final int VERSION_BD=1;
+    private static final int VERSION_BD=2;
     private static final String TABLA_USUARIOS="CREATE TABLE USUARIOS(DNI CHAR(9) NOT NULL PRIMARY KEY, NOMBRE CHAR(50) NOT NULL, APELLIDOS CHAR(50) NOT NULL, TARJETASANITARIA CHAR(50) NOT NULL, EDAD INT NOT NULL)";
     private static final String TABLA_DATOS="CREATE TABLE DATOS(DNI CHAR(9) NOT NULL, TEMPERATURA FLOAT(3,1) NOT NULL, FECHA DATE NOT NULL, SINT1 CHAR(50) NOT NULL, SINT2 CHAR(50) NOT NULL, OTROS CHAR(50))";
 
