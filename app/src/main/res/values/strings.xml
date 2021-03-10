@@ -64,8 +64,8 @@
     <string name="cansancio">Cansancio</string>
     <string name="contactoPos">Contacto con Positivo:</string>
     <string name="seleccionarSintomas">Selecciona los síntomas que tengas:</string>
-    <string name="perdidaGusto">Perdida olfato</string>
-    <string name="perdidaOlfato">Perdida gusto</string>
+    <string name="perdidaGusto">Pérdida olfato</string>
+    <string name="perdidaOlfato">Pérdida gusto</string>
 
 
     <string name="hello_first_fragment">Hello first fragment</string>

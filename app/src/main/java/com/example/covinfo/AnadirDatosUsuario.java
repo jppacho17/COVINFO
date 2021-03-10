@@ -39,9 +39,10 @@ public class AnadirDatosUsuario extends AppCompatActivity {
         contactoPos = findViewById(R.id.swContactoPos);
         PRCPos = findViewById(R.id.swPCR);
 
+        btnAñadirDatos=(Button) findViewById(R.id.btnAnadirDatos1);
 
 
-        //Copiado y pegado de version anterior, hay que ajustarlo todo
+        //Copiado y pegado de version anterior, hay que ajustarlo
         final Developerbbdd developerbbdd=new Developerbbdd(getApplicationContext());
 
         btnAñadirDatos.setOnClickListener(new View.OnClickListener() {
@@ -84,8 +85,8 @@ public class AnadirDatosUsuario extends AppCompatActivity {
                     hayPCRPos = "Si";
                 }
 
-
-                developerbbdd.agregarDatos(edtDNIUsuario.getText().toString(),edtTemperatura1.getText().toString(),edtFecha1.getText().toString(),edtSint11.getText().toString(),edtSint21.getText().toString(),edtOtros1.getText().toString());
+                //Toca revisar para meter los datos de la nueva version de la bbdd
+                developerbbdd.agregarDatos(edtDNIUsuario.getText().toString(),edtFechaUsuario.getText().toString(),edtTemperaturaUsuario.getText().toString(),dolorCabeza,hayCansancio,cuestaRespirar,perdidaGusto,perdidaOlfato,hayMejoria,hayContacto,hayPCRPos,edtFechaPCR.getText().toString(),edtOtrosSint.getText().toString());
                 Toast.makeText(getApplicationContext(),"DATOS ALMACENADOS CORRECTAMENTE",Toast.LENGTH_SHORT).show();
             }
         });

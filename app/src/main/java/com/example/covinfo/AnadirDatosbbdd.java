@@ -33,7 +33,8 @@ public class AnadirDatosbbdd extends AppCompatActivity {
         btnAñadir1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                developerbbdd.agregarDatos(edtDNI1.getText().toString(),edtTemperatura1.getText().toString(),edtFecha1.getText().toString(),edtSint11.getText().toString(),edtSint21.getText().toString(),edtOtros1.getText().toString());
+               //Funciona pero quitado para evitar problemas con la nueva bbdd
+                //developerbbdd.agregarDatos(edtDNI1.getText().toString(),edtTemperatura1.getText().toString(),edtFecha1.getText().toString(),edtSint11.getText().toString(),edtSint21.getText().toString(),edtOtros1.getText().toString());
                 Toast.makeText(getApplicationContext(),"DATOS AÑADIDOS CORRECTAMENTE",Toast.LENGTH_SHORT).show();
             }
         });
