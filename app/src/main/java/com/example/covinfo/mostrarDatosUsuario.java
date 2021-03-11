@@ -17,7 +17,7 @@ import android.widget.TextView;
 
 public class mostrarDatosUsuario extends AppCompatActivity {
 
-    private TextView txtResultado;
+    private TextView txtResultado,txtDNI;
     private Button btnBuscar;
     private SQLiteDatabase db;
 
@@ -47,33 +47,39 @@ public class mostrarDatosUsuario extends AppCompatActivity {
 
         txtResultado = (TextView) findViewById(R.id.datosUsuario);
         btnBuscar = (Button) findViewById(R.id.btnbuscar3);
-
+        txtDNI = (TextView) findViewById(R.id.buscarporDNI);
 
         // BD
         Developerbbdd BaseDatos = new Developerbbdd(this);
         db = BaseDatos.getReadableDatabase();
 
-        // Alternativa: query
-        String[] campos = new String[] {"dni","fecha","temperatura","cabeza", "cansancio","respiracion","gusto", "olfato","mejoria","contacto", "PCRPos","fechaPCR","otrosSint"};
-        //Invocación método para obtener todas las columnas de la base de datos, sin condiciones
-        Cursor c = db.query("DATOS", campos, null, null, null, null, null);
-        while(c.moveToNext()){
-            //String IDDatos = c.getString(0);
-            String dni = c.getString(0);
-            String fecha = c.getString(1);
-            String temperatura = c.getString(2);
-            String cabeza = c.getString(3);
-            String cansancio = c.getString(4);
-            String respiracion = c.getString(5);
-            String gusto = c.getString(6);
-            String olfato = c.getString(7);
-            String mejoria = c.getString(8);
-            String contacto = c.getString(9);
-            String PCRPos = c.getString(10);
-            String fechaPCR = c.getString(11);
-            String otrosSint = c.getString(12);
-            txtResultado.append(dni + " - " + temperatura + " - " + fecha + " - " + cabeza + " "  + cansancio + "" + respiracion + "" +"\n");
-        }
+        btnBuscar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String[] campos = new String[] {"dni","fecha","temperatura","cabeza", "cansancio","respiracion","gusto", "olfato","mejoria","contacto", "PCRPos","fechaPCR","otrosSint"};
+                Cursor c = db.rawQuery("SELECT * FROM DATOS WHERE dni="+txtDNI.getText().toString(),null);
+                while(c.moveToNext()){
+                    //String IDDatos = c.getString(0);
+                    String dni = c.getString(0);
+                    String fecha = c.getString(1);
+                    String temperatura = c.getString(2);
+                    String cabeza = c.getString(3);
+                    String cansancio = c.getString(4);
+                    String respiracion = c.getString(5);
+                    String gusto = c.getString(6);
+                    String olfato = c.getString(7);
+                    String mejoria = c.getString(8);
+                    String contacto = c.getString(9);
+                    String PCRPos = c.getString(10);
+                    String fechaPCR = c.getString(11);
+                    String otrosSint = c.getString(12);
+                    txtResultado.append(dni + " - " + temperatura + " - " + fecha + " - " + cabeza + " "  + cansancio + "" + respiracion + "" +"\n");
+
+                }
+            }
+        });
+
+
 
     }
 }

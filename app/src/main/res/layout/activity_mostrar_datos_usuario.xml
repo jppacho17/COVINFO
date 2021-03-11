@@ -71,12 +71,15 @@
             android:inputType="textPersonName"
             android:text="" />
 
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
         <TextView
             android:id="@+id/datosUsuario"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="70dp"
-            android:text="" />
+            android:text="" /></androidx.core.widget.NestedScrollView>
 
     </LinearLayout>
 

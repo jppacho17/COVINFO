@@ -1,7 +1,9 @@
 package com.example.covinfo;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,7 +12,12 @@ import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.Toast;
 
-public class AnadirDatosUsuario extends AppCompatActivity {
+import java.text.DateFormat;
+import java.util.Calendar;
+import android.widget.DatePicker;
+import android.widget.TextView;
+
+public class AnadirDatosUsuario extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
     EditText edtDNIUsuario, edtTemperaturaUsuario, edtFechaUsuario, edtOtrosSint, edtFechaPCR;
     Button btnAñadirDatos;
@@ -30,7 +37,7 @@ public class AnadirDatosUsuario extends AppCompatActivity {
         olfato = findViewById(R.id.chkOlfato);
 
         edtDNIUsuario =(EditText) findViewById(R.id.edtanadirDNI);
-        edtFechaUsuario =(EditText) findViewById(R.id.edtFechaAnadir);
+
         edtTemperaturaUsuario =(EditText) findViewById(R.id.edtTempUser);
         edtFechaPCR =(EditText) findViewById(R.id.edtFechaPCR);
         edtOtrosSint =(EditText) findViewById(R.id.edtOtrosSintomas);
@@ -39,8 +46,18 @@ public class AnadirDatosUsuario extends AppCompatActivity {
         contactoPos = findViewById(R.id.swContactoPos);
         PRCPos = findViewById(R.id.swPCR);
 
+        edtFechaUsuario =(EditText) findViewById(R.id.edtFechaAnadir);
+
+
         btnAñadirDatos=(Button) findViewById(R.id.btnAnadirDatos1);
 
+        edtFechaUsuario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogFragment datePicker = new DatePickerFragment();
+                datePicker.show(getSupportFragmentManager(), "date picker");
+            }
+        });
 
         //Copiado y pegado de version anterior, hay que ajustarlo
         final Developerbbdd developerbbdd=new Developerbbdd(getApplicationContext());
@@ -91,5 +108,16 @@ public class AnadirDatosUsuario extends AppCompatActivity {
             }
         });
 
+
+    }
+    @Override
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+        Calendar c = Calendar.getInstance();
+        c.set(Calendar.YEAR, year);
+        c.set(Calendar.MONTH, month);
+        c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+        String currentDateString = DateFormat.getDateInstance(DateFormat.SHORT).format(c.getTime());
+        TextView textView = (TextView) findViewById(R.id.edtFechaAnadir);
+        textView.setText(currentDateString);
     }
 }
