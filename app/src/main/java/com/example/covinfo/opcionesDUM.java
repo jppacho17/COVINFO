@@ -34,16 +34,16 @@ public class opcionesDUM extends AppCompatActivity {
         btnUsuarios.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Intent ir = new Intent(opcionesDUM.this,ObtenerDatosbbdd.class);
-                //startActivity(ir);
+                Intent ir = new Intent(opcionesDUM.this,MostrarUsuarios.class);
+                startActivity(ir);
             }
         });
 
         btnCentroMedico.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Intent ir = new Intent(opcionesDUM.this,EliminarDatosbbdd.class);
-                //startActivity(ir);
+                Intent ir = new Intent(opcionesDUM.this,MostrarDatosMedico.class);
+                startActivity(ir);
             }
         });
 

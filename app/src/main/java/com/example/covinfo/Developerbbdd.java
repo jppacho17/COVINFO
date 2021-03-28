@@ -9,9 +9,12 @@ import androidx.annotation.Nullable;
 public class Developerbbdd extends SQLiteOpenHelper {
 
     private static final String NOMBRE_BD="developerjp";
-    private static final int VERSION_BD=5;
-    private static final String TABLA_USUARIOS="CREATE TABLE USUARIOS(DNI CHAR(9) NOT NULL PRIMARY KEY, NOMBRE CHAR(50) NOT NULL, APELLIDOS CHAR(50) NOT NULL, TARJETASANITARIA CHAR(50) NOT NULL, EDAD INT NOT NULL)";
+    private static final int VERSION_BD=31;
+    private static final String TABLA_USUARIOS="CREATE TABLE USUARIOS(DNI CHAR(9) NOT NULL PRIMARY KEY, NOMBRE CHAR(50) NOT NULL, APELLIDOS CHAR(50) NOT NULL, FECHANAC DATE NOT NULL, TARJETASANITARIA CHAR(50) NOT NULL, MEDICAMENTOSHAB CHAR(50))";
     private static final String TABLA_DATOS="CREATE TABLE DATOS(DNI CHAR(9) NOT NULL, FECHA DATE NOT NULL, TEMPERATURA FLOAT(3,1) NOT NULL, CABEZA CHAR(9) NOT NULL,  CANSANCIO CHAR(9) NOT NULL,  RESPIRACION CHAR(9) NOT NULL,  GUSTO CHAR(9) NOT NULL, OLFATO CHAR(9) NOT NULL,  MEJORIA CHAR(9) NOT NULL, CONTACTO CHAR(9) NOT NULL, PCRPOS  CHAR(9) NOT NULL, FECHAPCR DATE , OTROSSINT CHAR(50))";
+    private static final String TABLA_MEDICO="CREATE TABLE MEDICO(CENTROMED CHAR(20), CIUDAD CHAR(20), NOMBREMED CHAR(50), TFNOMED INT, EMAILMED CHAR(50))";
+    //private static final String TABLA_MEDICOS="";
+
 
     public Developerbbdd( Context context) {
         super(context, NOMBRE_BD, null, VERSION_BD);
@@ -21,14 +24,19 @@ public class Developerbbdd extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(TABLA_USUARIOS);
         db.execSQL(TABLA_DATOS);
+        db.execSQL(TABLA_MEDICO);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE DATOS");
         db.execSQL("DROP TABLE USUARIOS");
+        db.execSQL("DROP TABLE MEDICO");
         db.execSQL(TABLA_USUARIOS);
         db.execSQL(TABLA_DATOS);
+        db.execSQL(TABLA_MEDICO);
+        db.execSQL("INSERT INTO MEDICO VALUES('CentroMedico','Cualquiera','Nombre del Medico','666666666','email_medico@medico.com')");
+        //agregarMedico("CentroMedico","Ciudad","Nombre del Medico","666666666","email_medico@gmail.com");
     }
 
     public void agregarUsuarios(String dni, String nombre, String apellidos, String fechaNac, String tarjetaSanitaria, String medicamentosHab){
@@ -46,5 +54,14 @@ public class Developerbbdd extends SQLiteOpenHelper {
             bd.close();
         }
     }
+
+    public void agregarMedico(String centroMed, String ciudad, String nombreMed, String telefonoMed, String emailMed){
+        SQLiteDatabase bd=getWritableDatabase();
+        if(bd!=null){
+            bd.execSQL("INSERT INTO MEDICO VALUES('"+centroMed+"','"+ciudad+"','"+nombreMed+"','"+telefonoMed+"','"+emailMed+"')");
+            bd.close();
+        }
+    }
+
 
 }

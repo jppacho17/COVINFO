@@ -67,8 +67,26 @@
     <string name="perdidaGusto">Pérdida olfato</string>
     <string name="perdidaOlfato">Pérdida gusto</string>
 
+    <string name="centroMedico2">Centro Médico:</string>
+    <string name="ciudad">Ciudad:</string>
+    <string name="nombreMedico">Médico:</string>
+    <string name="telefonoMedico">Teléfono del médico:</string>
+    <string name="emailMedico">Email del médico:</string>
+
+    <string name="modificar">Modificar</string>
+    <string name="volver">Volver</string>
+    <string name="anadirUsu">Añadir Usuario</string>
+
+    <string name="dni">Introduce el DNI:</string>
+    <string name="nombre">Introduce el nombre:</string>
+    <string name="apellido">Introduce los apellidos:</string>
+    <string name="tarjetaSanitaria">Introduce la tarjeta sanitaria:</string>
+    <string name="fechaNacimiento">Introduce la fecha de nacimiento:</string>
+    <string name="medicamentosHabituales">Medicamentos habituales:</string>
+
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="title_activity_mostrar_usuarios">MostrarUsuarios</string>
 
 </resources>

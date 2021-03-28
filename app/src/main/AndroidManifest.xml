@@ -12,7 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.COVINFO"
         android:usesCleartextTraffic="true">
-        <activity android:name=".AnadirDatosUsuario"></activity>
+        <activity
+            android:name=".MostrarUsuarios"
+            android:label="@string/title_activity_mostrar_usuarios"
+            android:theme="@style/Theme.COVINFO.NoActionBar"></activity>
+        <activity android:name=".AnadirUsuario" />
+        <activity android:name=".MostrarDatosMedico" />
+        <activity android:name=".AnadirDatosUsuario" />
         <activity
             android:name=".mostrarDatosUsuario"
             android:label="@string/title_activity_mostrar_datos_usuario"
