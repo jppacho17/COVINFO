@@ -12,12 +12,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 public class MostrarUsuarios extends AppCompatActivity {
 
     TextView txtUsu;
     private SQLiteDatabase db;
+    ListView listViewPersonas;
+    ArrayList<String> listaInformacion;
+    ArrayList<Usuario> listaUsuarios;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,25 +43,42 @@ public class MostrarUsuarios extends AppCompatActivity {
             }
         });
 
-        txtUsu = (TextView) findViewById(R.id.txtUsuario);
+        //txtUsu = (TextView) findViewById(R.id.txtUsuario);
+        listViewPersonas = (ListView) findViewById(R.id.listViewPersonas);
+
+
 
         // BD
         Developerbbdd BaseDatos = new Developerbbdd(this);
         db = BaseDatos.getReadableDatabase();
 
+        Usuario usuario=null;
+        listaUsuarios=new ArrayList<Usuario>();
+        Cursor cursor = db.rawQuery("SELECT * FROM USUARIOS",null);
+        while(cursor.moveToNext()){
+            usuario = new Usuario();
+            usuario.setDni(cursor.getString(0));
+            usuario.setNombre(cursor.getString(1));
+            usuario.setApellidos(cursor.getString(2));
+            usuario.setFechaNac(cursor.getString(3));
+            usuario.setTarjetaSanitaria(cursor.getString(4));
+            usuario.setMedHabituales(cursor.getString(5));
 
-        String[] campos = new String[] {"dni","fecha","temperatura","cabeza", "cansancio","respiracion","gusto", "olfato","mejoria","contacto", "PCRPos","fechaPCR","otrosSint"};
-        Cursor c = db.rawQuery("SELECT * FROM USUARIOS",null);
-        while(c.moveToNext()){
-            //String IDDatos = c.getString(0);
-            String dni = c.getString(0);
-            String nombre = c.getString(1);
-            String apellidos = c.getString(2);
-            String fechaNac = c.getString(3);
-            String tarjetaSan = c.getString(4);
-            String medHab = c.getString(5);
-            txtUsu.append(dni + " - " + nombre + " " + apellidos + " - " + fechaNac + " - "  + tarjetaSan + " - " + medHab + "" +"\n");
+            listaUsuarios.add(usuario);
+
         }
+
+        //ObtenerLista
+        listaInformacion=new ArrayList<String>();
+        for (int i=0;i<listaUsuarios.size();i++){
+
+            listaInformacion.add(listaUsuarios.get(i).getDni()+" - "+listaUsuarios.get(i).getNombre()+" "+listaUsuarios.get(i).getApellidos()+" - "+listaUsuarios.get(i).getFechaNac());
+        }
+
+        ArrayAdapter adaptador= new ArrayAdapter(this, android.R.layout.simple_list_item_1,listaInformacion);
+        listViewPersonas.setAdapter(adaptador);
+
+
 
 
 

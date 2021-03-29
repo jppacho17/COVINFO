@@ -24,14 +24,6 @@
         android:id="@+id/include"
         layout="@layout/content_mostrar_datos_usuario" />
 
-    <Button
-        android:id="@+id/btnbuscar3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top"
-        android:layout_margin="155dp"
-        android:text="BUSCAR" />
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
@@ -63,13 +55,12 @@
             android:layout_marginBottom="15dp"
             android:text="Introduce el DNI del usuario:" />
 
-        <EditText
-            android:id="@+id/buscarporDNI"
+        <Spinner
+            android:id="@+id/spinnerUsuario"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="" />
+            android:layout_height="wrap_content" />
+
+
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
