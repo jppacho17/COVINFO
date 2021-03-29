@@ -4,15 +4,22 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.Toast;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import android.widget.DatePicker;
 import android.widget.TextView;
@@ -23,11 +30,18 @@ public class AnadirDatosUsuario extends AppCompatActivity implements DatePickerD
     Button btnAñadirDatos;
     CheckBox cabeza, respirar, cansancio, gusto, olfato;
     Switch mejoria, contactoPos, PRCPos;
+    Spinner comboPersonas;
+    ArrayList<String> listaPersonas;
+    ArrayList<Usuario> personasList;
+    private SQLiteDatabase db;
+    String dniUsu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_anadir_datos_usuario);
+
+        dniUsu="";
 
         //Recuperar datos elementos
         cabeza = findViewById(R.id.chkCabeza);
@@ -36,7 +50,7 @@ public class AnadirDatosUsuario extends AppCompatActivity implements DatePickerD
         gusto = findViewById(R.id.chkGusto);
         olfato = findViewById(R.id.chkOlfato);
 
-        edtDNIUsuario =(EditText) findViewById(R.id.edtanadirDNI);
+        //edtDNIUsuario =(EditText) findViewById(R.id.edtanadirDNI);
 
         edtTemperaturaUsuario =(EditText) findViewById(R.id.edtTempUser);
         edtFechaPCR =(EditText) findViewById(R.id.edtFechaPCR);
@@ -61,6 +75,53 @@ public class AnadirDatosUsuario extends AppCompatActivity implements DatePickerD
 
         //Copiado y pegado de version anterior, hay que ajustarlo
         final Developerbbdd developerbbdd=new Developerbbdd(getApplicationContext());
+
+        db = developerbbdd.getWritableDatabase();
+
+        comboPersonas = (Spinner) findViewById(R.id.spinnerUsus);
+
+        //Generar lista personas
+        Usuario persona=null;
+        personasList = new ArrayList<Usuario>();
+        Cursor cursor = db.rawQuery("SELECT * FROM USUARIOS",null);
+        while(cursor.moveToNext()){
+            persona = new Usuario();
+            persona.setDni(cursor.getString(0));
+            persona.setNombre(cursor.getString(1));
+            persona.setApellidos(cursor.getString(2));
+            persona.setFechaNac(cursor.getString(3));
+            persona.setTarjetaSanitaria(cursor.getString(4));
+            persona.setMedHabituales(cursor.getString(5));
+
+            personasList.add(persona);
+
+        }
+
+        //ObtenerLista
+        listaPersonas=new ArrayList<String>();
+        //listaPersonas.add("Seleccione");
+        for (int i=0;i<personasList.size();i++){
+            listaPersonas.add(personasList.get(i).getDni()+" - "+personasList.get(i).getNombre()+" "+personasList.get(i).getApellidos());
+        }
+
+        ArrayAdapter<CharSequence> adaptador=new ArrayAdapter(this, android.R.layout.simple_spinner_item,listaPersonas);
+        comboPersonas.setAdapter(adaptador);
+
+        comboPersonas.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                dniUsu = personasList.get(position).getDni();
+                //Toast.makeText(getApplicationContext(),personasList.get(position).getDni(),Toast.LENGTH_SHORT).show();
+                //edtOtrosSint.setText(personasList.get(position-1).getDni());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        db.close();
 
         btnAñadirDatos.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,8 +164,10 @@ public class AnadirDatosUsuario extends AppCompatActivity implements DatePickerD
                 }
 
                 //Toca revisar para meter los datos de la nueva version de la bbdd
-                developerbbdd.agregarDatos(edtDNIUsuario.getText().toString(),edtFechaUsuario.getText().toString(),edtTemperaturaUsuario.getText().toString(),dolorCabeza,hayCansancio,cuestaRespirar,perdidaGusto,perdidaOlfato,hayMejoria,hayContacto,hayPCRPos,edtFechaPCR.getText().toString(),edtOtrosSint.getText().toString());
+                developerbbdd.agregarDatos(dniUsu,edtFechaUsuario.getText().toString(),edtTemperaturaUsuario.getText().toString(),dolorCabeza,hayCansancio,cuestaRespirar,perdidaGusto,perdidaOlfato,hayMejoria,hayContacto,hayPCRPos,edtFechaPCR.getText().toString(),edtOtrosSint.getText().toString());
                 Toast.makeText(getApplicationContext(),"DATOS ALMACENADOS CORRECTAMENTE",Toast.LENGTH_SHORT).show();
+                Intent ir = new Intent(AnadirDatosUsuario.this,mostrarDatosUsuario.class);
+                startActivity(ir);
             }
         });
 

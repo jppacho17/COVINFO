@@ -10,6 +10,8 @@ import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.View;
 import android.widget.AdapterView;
@@ -29,6 +31,9 @@ public class mostrarDatosUsuario extends AppCompatActivity {
     Spinner comboPersonas;
     ArrayList<String> listaPersonas;
     ArrayList<Usuario> personasList;
+
+    ArrayList<DatosUsuario> listaDatos;
+    RecyclerView recyclerDatos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +59,7 @@ public class mostrarDatosUsuario extends AppCompatActivity {
             }
         });
 
-        txtResultado = (TextView) findViewById(R.id.datosUsuario);
+        //txtResultado = (TextView) findViewById(R.id.datosUsuario);
         //txtDNI = (TextView) findViewById(R.id.buscarporDNI);
         comboPersonas = (Spinner) findViewById(R.id.spinnerUsuario);
 
@@ -81,41 +86,50 @@ public class mostrarDatosUsuario extends AppCompatActivity {
 
         //ObtenerLista
         listaPersonas=new ArrayList<String>();
-        listaPersonas.add("Seleccione");
+        //listaPersonas.add("Seleccione");
         for (int i=0;i<personasList.size();i++){
-            listaPersonas.add(personasList.get(i).getDni()+" - "+personasList.get(i).getNombre()+" - "+personasList.get(i).getApellidos());
+            listaPersonas.add(personasList.get(i).getDni()+" - "+personasList.get(i).getNombre()+" "+personasList.get(i).getApellidos());
         }
 
         ArrayAdapter<CharSequence> adaptador=new ArrayAdapter(this, android.R.layout.simple_spinner_item,listaPersonas);
         comboPersonas.setAdapter(adaptador);
 
+        listaDatos=new ArrayList<>();
+        recyclerDatos = (RecyclerView) findViewById(R.id.recyclerDatos);
+        recyclerDatos.setLayoutManager(new LinearLayoutManager(this));
+
+
         comboPersonas.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                txtResultado.setText("");
-                if (position!=0){
-                    String[] campos = new String[] {"dni","fecha","temperatura","cabeza", "cansancio","respiracion","gusto", "olfato","mejoria","contacto", "PCRPos","fechaPCR","otrosSint"};
-                    Cursor c = db.rawQuery("SELECT * FROM DATOS WHERE dni="+personasList.get(position-1).getDni(),null);
-                    while(c.moveToNext()){
-                        //String IDDatos = c.getString(0);
-                        String dni = c.getString(0);
-                        String fecha = c.getString(1);
-                        String temperatura = c.getString(2);
-                        String cabeza = c.getString(3);
-                        String cansancio = c.getString(4);
-                        String respiracion = c.getString(5);
-                        String gusto = c.getString(6);
-                        String olfato = c.getString(7);
-                        String mejoria = c.getString(8);
-                        String contacto = c.getString(9);
-                        String PCRPos = c.getString(10);
-                        String fechaPCR = c.getString(11);
-                        String otrosSint = c.getString(12);
+                //txtResultado.setText("");
+                listaDatos.clear();
+                AdaptadorDatos adapter=new AdaptadorDatos(listaDatos);
+                recyclerDatos.setAdapter(adapter);
+                    DatosUsuario datosUsuario=null;
+                    Cursor cursor = db.rawQuery("SELECT * FROM DATOS WHERE dni="+personasList.get(position).getDni(),null);
+                    while(cursor.moveToNext()){
+                        datosUsuario=new DatosUsuario();
+                        datosUsuario.setDni(cursor.getString(0));
+                        datosUsuario.setFecha(cursor.getString(1));
+                        datosUsuario.setTemperatura(cursor.getString(2));
+                        datosUsuario.setCabeza(cursor.getString(3));
+                        datosUsuario.setCansancio(cursor.getString(4));
+                        datosUsuario.setRespiracion(cursor.getString(5));
+                        datosUsuario.setGusto(cursor.getString(6));
+                        datosUsuario.setOlfato(cursor.getString(7));
+                        datosUsuario.setMejoria(cursor.getString(8));
+                        datosUsuario.setContacto(cursor.getString(9));
+                        datosUsuario.setPcrPos(cursor.getString(10));
+                        datosUsuario.setFechapcr(cursor.getString(11));
+                        datosUsuario.setOtrosSintomas(cursor.getString(12));
 
-                        txtResultado.append(dni + " - " + temperatura + " - " + fecha + " - " + cabeza + " "  + cansancio + "" + respiracion + "" +"\n");
+                        listaDatos.add(datosUsuario);
+
                     }
 
-                }
+                //AdaptadorDatos adapter=new AdaptadorDatos(listaDatos);
+                recyclerDatos.setAdapter(adapter);
             }
 
             @Override
