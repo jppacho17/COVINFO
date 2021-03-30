@@ -166,8 +166,9 @@ public class AnadirDatosUsuario extends AppCompatActivity implements DatePickerD
                 //Toca revisar para meter los datos de la nueva version de la bbdd
                 developerbbdd.agregarDatos(dniUsu,edtFechaUsuario.getText().toString(),edtTemperaturaUsuario.getText().toString(),dolorCabeza,hayCansancio,cuestaRespirar,perdidaGusto,perdidaOlfato,hayMejoria,hayContacto,hayPCRPos,edtFechaPCR.getText().toString(),edtOtrosSint.getText().toString());
                 Toast.makeText(getApplicationContext(),"DATOS ALMACENADOS CORRECTAMENTE",Toast.LENGTH_SHORT).show();
-                Intent ir = new Intent(AnadirDatosUsuario.this,mostrarDatosUsuario.class);
-                startActivity(ir);
+                //Intent ir = new Intent(AnadirDatosUsuario.this,mostrarDatosUsuario.class);
+                //startActivity(ir);
+                finish();
             }
         });
 

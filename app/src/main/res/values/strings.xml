@@ -84,6 +84,13 @@
     <string name="fechaNacimiento">Introduce la fecha de nacimiento:</string>
     <string name="medicamentosHabituales">Medicamentos habituales:</string>
     <string name="seleccionaUsuario">Selecciona Usuario:</string>
+    <string name="temperatura2">Temperatura</string>
+    <string name="btnDatos">Datos</string>
+    <string name="btnGrafica2">Graficas</string>
+    <string name="gestionDatos">Gestion Datos</string>
+    <string name="testCOVID">Test COVID</string>
+    <string name="estadisticasMun">Estadisticas mundiales</string>
+    <string name="recomendaciones">Recomendaciones</string>
 
     <string name="fechaFija">Fecha:</string>
     <string name="temperaturaFija">Temperatura:</string>
@@ -91,9 +98,9 @@
     <string name="cabeceraEmail">|   DNI    |   Fecha    | Temperatura | Dolor Cabeza | Cansancio | Cuesta respirar | Pérdida Gusto | Pérdida Olfato | Mejoría | Contacto con Positivo | PCR Pos | Otros Síntomas |</string>
 
 
-
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="title_activity_mostrar_usuarios">MostrarUsuarios</string>
+    <string name="title_activity_menubbddfinal">menubbddfinal</string>
 
 </resources>

@@ -12,16 +12,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.COVINFO"
         android:usesCleartextTraffic="true">
+        <activity android:name=".menuprincipalfinal"></activity>
+        <activity
+            android:name=".menubbddfinal"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.COVINFO.NoActionBar" />
+        <activity android:name=".graficaTemperaturas" />
         <activity
             android:name=".MostrarUsuarios"
-            android:label="@string/title_activity_mostrar_usuarios"
-            android:theme="@style/Theme.COVINFO.NoActionBar"></activity>
+            android:label="@string/app_name"
+            android:theme="@style/Theme.COVINFO.NoActionBar" />
         <activity android:name=".AnadirUsuario" />
         <activity android:name=".MostrarDatosMedico" />
         <activity android:name=".AnadirDatosUsuario" />
         <activity
             android:name=".mostrarDatosUsuario"
-            android:label="@string/title_activity_mostrar_datos_usuario"
+            android:label="@string/app_name"
             android:theme="@style/Theme.COVINFO.NoActionBar" />
         <activity android:name=".opcionesDUM" />
         <activity android:name=".EliminarDatosbbdd" />

@@ -52,8 +52,9 @@ public class AnadirUsuario extends AppCompatActivity implements DatePickerDialog
             public void onClick(View view) {
                 developerbbdd.agregarUsuarios(edtdni.getText().toString(),edtNombre.getText().toString(),edtApellidos.getText().toString(),edtFechaNac.getText().toString(),edtTarjetaSanitaria.getText().toString(),edtMedHab.getText().toString());
                 Toast.makeText(getApplicationContext(),"USUARIO CREADO CORRECTAMENTE", Toast.LENGTH_SHORT).show();
-                Intent ir = new Intent(AnadirUsuario.this,MostrarUsuarios.class);
-                startActivity(ir);
+                //Intent ir = new Intent(AnadirUsuario.this,MostrarUsuarios.class);
+                //startActivity(ir);
+                finish();
             }
         });
 

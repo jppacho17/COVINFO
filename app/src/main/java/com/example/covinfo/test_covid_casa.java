@@ -30,7 +30,7 @@ public class test_covid_casa extends AppCompatActivity {
         btnMenuPrincipal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent irMenu = new Intent(test_covid_casa.this,Opciones.class);
+                Intent irMenu = new Intent(test_covid_casa.this,menuprincipalfinal.class);
                 startActivity(irMenu);
             }
         });

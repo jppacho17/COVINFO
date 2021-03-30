@@ -69,16 +69,18 @@ public class MostrarDatosMedico extends AppCompatActivity {
 
                 Toast.makeText(MostrarDatosMedico.this,"DATOS MODIFICADOS CORRECTAMENTE",Toast.LENGTH_LONG).show();
 
-                Intent ir = new Intent(MostrarDatosMedico.this,opcionesDUM.class);
-                startActivity(ir);
+                //Intent ir = new Intent(MostrarDatosMedico.this,opcionesDUM.class);
+                //startActivity(ir);
+                finish();
             }
         });
 
         btnVolver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent ir = new Intent(MostrarDatosMedico.this,opcionesDUM.class);
-                startActivity(ir);
+                //Intent ir = new Intent(MostrarDatosMedico.this,opcionesDUM.class);
+                //startActivity(ir);
+                finish();
             }
         });
     }

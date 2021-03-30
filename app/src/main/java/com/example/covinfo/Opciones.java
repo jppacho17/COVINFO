@@ -12,6 +12,7 @@ public class Opciones extends AppCompatActivity {
     Button btnEstadisticas;
     Button btnTest;
     Button btnBBDD;
+    Button btnInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +22,7 @@ public class Opciones extends AppCompatActivity {
         btnEstadisticas = (Button) findViewById(R.id.buttonEstadisticas);
         btnTest = (Button) findViewById(R.id.buttonTest);
         btnBBDD = (Button) findViewById(R.id.buttonBBDD);
+        btnInfo = (Button) findViewById(R.id.buttonInfo);
 
         btnEstadisticas.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,7 +43,15 @@ public class Opciones extends AppCompatActivity {
         btnBBDD.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent irBBDD = new Intent(Opciones.this,opcionesDUM.class);
+                Intent irBBDD = new Intent(Opciones.this,menubbddfinal.class);
+                startActivity(irBBDD);
+            }
+        });
+
+        btnInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent irBBDD = new Intent(Opciones.this,graficaTemperaturas.class);
                 startActivity(irBBDD);
             }
         });
