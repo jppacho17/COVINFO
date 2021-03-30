@@ -127,14 +127,14 @@ public class AnadirDatosUsuario extends AppCompatActivity implements DatePickerD
             @Override
             public void onClick(View v) {
                 //Variables por defecto
-                String dolorCabeza = "no";
-                String cuestaRespirar = "no";
-                String hayCansancio = "no";
-                String perdidaGusto = "no";
-                String perdidaOlfato = "no";
-                String hayMejoria = "no";
-                String hayContacto = "no";
-                String hayPCRPos = "no";
+                String dolorCabeza = "No";
+                String cuestaRespirar = "No";
+                String hayCansancio = "No";
+                String perdidaGusto = "No";
+                String perdidaOlfato = "No";
+                String hayMejoria = "No";
+                String hayContacto = "No";
+                String hayPCRPos = "No";
 
                 //Leo los valores de Checkboxes y Switches
                 if(cabeza.isChecked()==true){

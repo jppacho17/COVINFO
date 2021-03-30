@@ -54,7 +54,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="70dp"
             android:layout_marginBottom="15dp"
-            android:text="Introduce el DNI del usuario:" />
+            android:text="@string/seleccionaUsuario" />
 
         <Spinner
             android:id="@+id/spinnerUsuario"

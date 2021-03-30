@@ -57,7 +57,7 @@
 
     <string name="fechaPCR">Fecha PCR</string>
     <string name="otrosSintomas">Introduce otros síntomas:</string>
-    <string name="dolorCabeza">Dolor de cebeza</string>
+    <string name="dolorCabeza">Dolor de cabeza</string>
     <string name="difRespiratoria">Dificultad respirar</string>
     <string name="mejoria">Mejoría:</string>
     <string name="PRCpos">PCR Positiva:</string>
@@ -88,6 +88,7 @@
     <string name="fechaFija">Fecha:</string>
     <string name="temperaturaFija">Temperatura:</string>
     <string name="PCRPosFija">PCR Positiva:</string>
+    <string name="cabeceraEmail">|   DNI    |   Fecha    | Temperatura | Dolor Cabeza | Cansancio | Cuesta respirar | Pérdida Gusto | Pérdida Olfato | Mejoría | Contacto con Positivo | PCR Pos | Otros Síntomas |</string>
 
 
 

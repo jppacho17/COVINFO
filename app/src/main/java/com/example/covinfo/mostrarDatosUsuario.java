@@ -1,8 +1,10 @@
 package com.example.covinfo;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -19,9 +21,22 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+
+import java.util.Properties;
+
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+
 
 public class mostrarDatosUsuario extends AppCompatActivity {
 
@@ -34,6 +49,14 @@ public class mostrarDatosUsuario extends AppCompatActivity {
 
     ArrayList<DatosUsuario> listaDatos;
     RecyclerView recyclerDatos;
+
+    String nombreEnfermo="";
+    String apellidoEnfermo="";
+    String dniEnfermo="";
+    String nombreMedico="";
+    String emailMedico="";
+
+    String sintomasEnviar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,11 +74,42 @@ public class mostrarDatosUsuario extends AppCompatActivity {
             }
         });
 
+
+
         FloatingActionButton fab2 = findViewById(R.id.fab2);
         fab2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "En el futuro se enviarán los datos", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                sintomasEnviar="";
+                for(int i=0;i<listaDatos.size();i++){
+                    sintomasEnviar=sintomasEnviar+" | ";
+                    sintomasEnviar=sintomasEnviar+listaDatos.get(i).getDni();
+                    sintomasEnviar=sintomasEnviar+" | ";
+                    sintomasEnviar=sintomasEnviar+listaDatos.get(i).getFecha();
+                    sintomasEnviar=sintomasEnviar+" |     ";
+                    sintomasEnviar=sintomasEnviar+listaDatos.get(i).getTemperatura();
+                    sintomasEnviar=sintomasEnviar+"      |      ";
+                    sintomasEnviar=sintomasEnviar+listaDatos.get(i).getCabeza();
+                    sintomasEnviar=sintomasEnviar+"     |     ";
+                    sintomasEnviar=sintomasEnviar+listaDatos.get(i).getCansancio();
+                    sintomasEnviar=sintomasEnviar+"     |     ";
+                    sintomasEnviar=sintomasEnviar+listaDatos.get(i).getRespiracion();
+                    sintomasEnviar=sintomasEnviar+"    |     ";
+                    sintomasEnviar=sintomasEnviar+listaDatos.get(i).getGusto();
+                    sintomasEnviar=sintomasEnviar+"     |     ";
+                    sintomasEnviar=sintomasEnviar+listaDatos.get(i).getOlfato();
+                    sintomasEnviar=sintomasEnviar+"    |    ";
+                    sintomasEnviar=sintomasEnviar+listaDatos.get(i).getMejoria();
+                    sintomasEnviar=sintomasEnviar+"     |     ";
+                    sintomasEnviar=sintomasEnviar+listaDatos.get(i).getContacto();
+                    sintomasEnviar=sintomasEnviar+"     |    ";
+                    sintomasEnviar=sintomasEnviar+listaDatos.get(i).getPcrPos();
+                    sintomasEnviar=sintomasEnviar+"     |     ";
+                    sintomasEnviar=sintomasEnviar+listaDatos.get(i).getOtrosSintomas();
+                    sintomasEnviar=sintomasEnviar+"<br>";
+                }
+                sendEmailWithGmail("acovinfo@gmail.com","covinfo2021",emailMedico,"[COVINFO] Seguimiento paciente "+nombreEnfermo+" "+apellidoEnfermo+" - "+ dniEnfermo,"Hola "+nombreMedico+","+"<br>"+"<br>"+"Estos son los datos de seguimiento del paciente: "+nombreEnfermo+" "+apellidoEnfermo+" - "+ dniEnfermo+"<br>"+"<br>"+getString(R.string.cabeceraEmail)+"<br>"+sintomasEnviar);
+                Snackbar.make(view, "Se han enviado los datos de "+nombreEnfermo+" al médico "+nombreMedico+" ("+emailMedico+")", Snackbar.LENGTH_LONG).setAction("Action", null).show();
             }
         });
 
@@ -66,6 +120,18 @@ public class mostrarDatosUsuario extends AppCompatActivity {
         // BD
         Developerbbdd BaseDatos = new Developerbbdd(this);
         db = BaseDatos.getReadableDatabase();
+
+        //Para sacar el nombre y correo del medico
+        Cursor c2 = db.rawQuery("SELECT * FROM MEDICO",null);
+        while(c2.moveToNext()) {
+            //String IDDatos = c.getString(0);
+            String centroMed = c2.getString(0);
+            String ciudadMed = c2.getString(1);
+            nombreMedico = c2.getString(2);
+            String telefonoMed = c2.getString(3);
+            emailMedico = c2.getString(4);
+
+        }
 
         //Generar lista personas
         Usuario persona=null;
@@ -106,6 +172,9 @@ public class mostrarDatosUsuario extends AppCompatActivity {
                 listaDatos.clear();
                 AdaptadorDatos adapter=new AdaptadorDatos(listaDatos);
                 recyclerDatos.setAdapter(adapter);
+                nombreEnfermo=personasList.get(position).getNombre();
+                apellidoEnfermo=personasList.get(position).getApellidos();
+                dniEnfermo=personasList.get(position).getDni();
                     DatosUsuario datosUsuario=null;
                     Cursor cursor = db.rawQuery("SELECT * FROM DATOS WHERE dni="+personasList.get(position).getDni(),null);
                     while(cursor.moveToNext()){
@@ -128,6 +197,15 @@ public class mostrarDatosUsuario extends AppCompatActivity {
 
                     }
 
+                 adapter.setOnClickListener(new View.OnClickListener() {
+                     @Override
+                     public void onClick(View v) {
+                         Toast.makeText(getApplicationContext(),"Datos de la fecha: "+listaDatos.get(recyclerDatos.getChildAdapterPosition(v)).getFecha()+"\n"+"Temperatura: "+listaDatos.get(recyclerDatos.getChildAdapterPosition(v)).getTemperatura()+"\n"+"Dolor de cabeza: "+listaDatos.get(recyclerDatos.getChildAdapterPosition(v)).getCabeza()+"\n"+"Cansancio: "+listaDatos.get(recyclerDatos.getChildAdapterPosition(v)).getCansancio()+"\n"+
+                                 "Cuesta respirar: "+listaDatos.get(recyclerDatos.getChildAdapterPosition(v)).getRespiracion()+"\n"+"Perdida del gusto: "+listaDatos.get(recyclerDatos.getChildAdapterPosition(v)).getGusto()+"\n"+"Perdida del olfato: "+listaDatos.get(recyclerDatos.getChildAdapterPosition(v)).getOlfato()+"\n"+"Mejoría: "+listaDatos.get(recyclerDatos.getChildAdapterPosition(v)).getMejoria()+"\n"
+                                 +"Contacto con Positivo: "+listaDatos.get(recyclerDatos.getChildAdapterPosition(v)).getContacto()+"\n"+"PCR positiva: "+listaDatos.get(recyclerDatos.getChildAdapterPosition(v)).getPcrPos()+"\n"+"Otros síntomas: "+listaDatos.get(recyclerDatos.getChildAdapterPosition(v)).getOtrosSintomas(),Toast.LENGTH_LONG).show();
+                     }
+                 });
+
                 //AdaptadorDatos adapter=new AdaptadorDatos(listaDatos);
                 recyclerDatos.setAdapter(adapter);
             }
@@ -143,4 +221,83 @@ public class mostrarDatosUsuario extends AppCompatActivity {
 
 
     }
+
+    /**
+     * Send email with Gmail service.
+     */
+    private void sendEmailWithGmail(final String recipientEmail, final String recipientPassword,
+                                    String to, String subject, String message) {
+        Properties props = new Properties();
+        props.put("mail.smtp.host", "smtp.gmail.com");
+        props.put("mail.smtp.socketFactory.port", "465");
+        props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.port", "465");
+
+        Session session = Session.getDefaultInstance(props, new Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(recipientEmail, recipientPassword);
+            }
+        });
+
+        SenderAsyncTask task = new SenderAsyncTask(session, recipientEmail, to, subject, message);
+        task.execute();
+    }
+
+    /**
+     * AsyncTask to send email
+     */
+    private class SenderAsyncTask extends AsyncTask<String, String, String> {
+
+        private String from, to, subject, message;
+        private ProgressDialog progressDialog;
+        private Session session;
+
+        public SenderAsyncTask(Session session, String from, String to, String subject, String message) {
+            this.session = session;
+            this.from = from;
+            this.to = to;
+            this.subject = subject;
+            this.message = message;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressDialog = ProgressDialog.show(mostrarDatosUsuario.this, "", "Enviando email", true);
+            progressDialog.setCancelable(false);
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                Message mimeMessage = new MimeMessage(session);
+                mimeMessage.setFrom(new InternetAddress(from));
+                mimeMessage.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
+                mimeMessage.setSubject(subject);
+                mimeMessage.setContent(message, "text/html; charset=utf-8");
+                Transport.send(mimeMessage);
+            } catch (MessagingException e) {
+                e.printStackTrace();
+                return e.getMessage();
+            } catch (Exception e) {
+                e.printStackTrace();
+                return e.getMessage();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onProgressUpdate(String... values) {
+            super.onProgressUpdate(values);
+            progressDialog.setMessage(values[0]);
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            progressDialog.dismiss();
+            Toast.makeText(getApplicationContext(), result, Toast.LENGTH_LONG).show();
+        }
+    }
+
 }
