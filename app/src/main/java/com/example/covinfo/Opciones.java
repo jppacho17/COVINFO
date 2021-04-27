@@ -1,7 +1,14 @@
 package com.example.covinfo;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 
+import android.app.AlarmManager;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -23,6 +30,9 @@ public class Opciones extends AppCompatActivity {
         btnTest = (Button) findViewById(R.id.buttonTest);
         btnBBDD = (Button) findViewById(R.id.buttonBBDD);
         btnInfo = (Button) findViewById(R.id.buttonInfo);
+
+
+
 
         btnEstadisticas.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,4 +66,7 @@ public class Opciones extends AppCompatActivity {
             }
         });
     }
+
+
+
 }

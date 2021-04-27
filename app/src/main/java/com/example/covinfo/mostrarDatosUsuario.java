@@ -82,33 +82,43 @@ public class mostrarDatosUsuario extends AppCompatActivity {
             public void onClick(View view) {
                 sintomasEnviar="";
                 for(int i=0;i<listaDatos.size();i++){
-                    sintomasEnviar=sintomasEnviar+" | ";
-                    sintomasEnviar=sintomasEnviar+listaDatos.get(i).getDni();
-                    sintomasEnviar=sintomasEnviar+" | ";
+                    sintomasEnviar=sintomasEnviar+"Fecha de la medición: ";
                     sintomasEnviar=sintomasEnviar+listaDatos.get(i).getFecha();
-                    sintomasEnviar=sintomasEnviar+" |     ";
+                    sintomasEnviar=sintomasEnviar+"<br>";
+                    sintomasEnviar=sintomasEnviar+"Temperatura: ";
                     sintomasEnviar=sintomasEnviar+listaDatos.get(i).getTemperatura();
-                    sintomasEnviar=sintomasEnviar+"      |      ";
+                    sintomasEnviar=sintomasEnviar+"<br>";
+                    sintomasEnviar=sintomasEnviar+"Dolor de Cabeza: ";
                     sintomasEnviar=sintomasEnviar+listaDatos.get(i).getCabeza();
-                    sintomasEnviar=sintomasEnviar+"     |     ";
+                    sintomasEnviar=sintomasEnviar+"<br>";
+                    sintomasEnviar=sintomasEnviar+"Cansancio: ";
                     sintomasEnviar=sintomasEnviar+listaDatos.get(i).getCansancio();
-                    sintomasEnviar=sintomasEnviar+"     |     ";
+                    sintomasEnviar=sintomasEnviar+"<br>";
+                    sintomasEnviar=sintomasEnviar+"Cuesta respirar: ";
                     sintomasEnviar=sintomasEnviar+listaDatos.get(i).getRespiracion();
-                    sintomasEnviar=sintomasEnviar+"    |     ";
+                    sintomasEnviar=sintomasEnviar+"<br>";
+                    sintomasEnviar=sintomasEnviar+"Pérdida del gusto: ";
                     sintomasEnviar=sintomasEnviar+listaDatos.get(i).getGusto();
-                    sintomasEnviar=sintomasEnviar+"     |     ";
+                    sintomasEnviar=sintomasEnviar+"<br>";
+                    sintomasEnviar=sintomasEnviar+"Pérdida del olfato: ";
                     sintomasEnviar=sintomasEnviar+listaDatos.get(i).getOlfato();
-                    sintomasEnviar=sintomasEnviar+"    |    ";
+                    sintomasEnviar=sintomasEnviar+"<br>";
+                    sintomasEnviar=sintomasEnviar+"Nota mejoría: ";
                     sintomasEnviar=sintomasEnviar+listaDatos.get(i).getMejoria();
-                    sintomasEnviar=sintomasEnviar+"     |     ";
+                    sintomasEnviar=sintomasEnviar+"<br>";
+                    sintomasEnviar=sintomasEnviar+"Contacto con persona con COVID: ";
                     sintomasEnviar=sintomasEnviar+listaDatos.get(i).getContacto();
-                    sintomasEnviar=sintomasEnviar+"     |    ";
+                    sintomasEnviar=sintomasEnviar+"<br>";
+                    sintomasEnviar=sintomasEnviar+"PCR Positiva: ";
                     sintomasEnviar=sintomasEnviar+listaDatos.get(i).getPcrPos();
-                    sintomasEnviar=sintomasEnviar+"     |     ";
+                    sintomasEnviar=sintomasEnviar+"<br>";
+                    sintomasEnviar=sintomasEnviar+"Otros síntomas: ";
                     sintomasEnviar=sintomasEnviar+listaDatos.get(i).getOtrosSintomas();
                     sintomasEnviar=sintomasEnviar+"<br>";
+                    sintomasEnviar=sintomasEnviar+"-----------------------------------------------------------------------------------";
+                    sintomasEnviar=sintomasEnviar+"<br>";
                 }
-                sendEmailWithGmail("acovinfo@gmail.com","covinfo2021",emailMedico,"[COVINFO] Seguimiento paciente "+nombreEnfermo+" "+apellidoEnfermo+" - "+ dniEnfermo,"Hola "+nombreMedico+","+"<br>"+"<br>"+"Estos son los datos de seguimiento del paciente: "+nombreEnfermo+" "+apellidoEnfermo+" - "+ dniEnfermo+"<br>"+"<br>"+getString(R.string.cabeceraEmail)+"<br>"+sintomasEnviar);
+                sendEmailWithGmail("acovinfo@gmail.com","covinfo2021",emailMedico,"[COVINFO] Seguimiento paciente "+nombreEnfermo+" "+apellidoEnfermo+" - "+ dniEnfermo,"Hola "+nombreMedico+","+"<br>"+"<br>"+"Estos son los datos de seguimiento del paciente: "+nombreEnfermo+" "+apellidoEnfermo+" - "+ dniEnfermo+"<br>"+"<br>"+sintomasEnviar);
                 Snackbar.make(view, "Se han enviado los datos de "+nombreEnfermo+" al médico "+nombreMedico+" ("+emailMedico+")", Snackbar.LENGTH_LONG).setAction("Action", null).show();
             }
         });

@@ -49,8 +49,8 @@ public class menuprincipalfinal extends AppCompatActivity {
         btnrecomendaciones.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Intent ir = new Intent(menuprincipalfinal.this,menubbddfinal.class);
-                //startActivity(ir);
+                Intent ir = new Intent(menuprincipalfinal.this,Recomendaciones.class);
+                startActivity(ir);
             }
         });
     }
